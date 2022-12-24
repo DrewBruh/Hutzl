@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import ForgotPassword from "../views/ForgotPassword.vue";
+import Products from "../views/Products.vue";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "Home",
+    component: Home,
   },
   {
     path: "/about",
@@ -15,6 +19,39 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+    meta: {
+      title: "Login",
+    },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+    meta: {
+      title: "Register",
+    },
+  },
+
+  {
+    path: "/forgot-password",
+    name: "ForgotPassword",
+    component: ForgotPassword,
+    meta: {
+      title: "Forgot Password",
+    },
+  },
+  {
+    path: "/products",
+    name: "Products",
+    component: Products,
+    meta: {
+      title: "Products",
+    },
   },
 ];
 

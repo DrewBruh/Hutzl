@@ -1,0 +1,41 @@
+//the underscore in the file name tells our compiler to ignore it and not turn it into a css folder
+@font-face {
+  font-family: "Monument Grotesk";
+  src: url("https://uploads-ssl.webflow.com/62d57921074baa1ce7275405/63459319df3de20d5db7c68c_ABCMonumentGrotesk-Ultra.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GT America Mono";
+  src: url("https://uploads-ssl.webflow.com/62d57921074baa1ce7275405/6345933940468a06c8c5005b_GT-America-Mono-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("https://uploads-ssl.webflow.com/62d57921074baa1ce7275405/6345934c91dabedc4b230fe4_PPNeueMontreal-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+$transition: color 200ms ease,
+  background-color 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+$btn-background: wheat;
+$primary-color: #255e5c;
+$acccent-color: #c94c1ffe;
+$text-color: #fff;
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+);
+
+$circularLoaderSize: 90px;
+$small-breakpoint: 640px;
+$medium-breakpoint: 768px;
+$large-breakpoint: 1024px;

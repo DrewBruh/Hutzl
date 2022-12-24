@@ -1,0 +1,478 @@
+// todo: refactor for layout and components that I will use in the future
+//todo: refactor classes to have mobile useable enviornment deal with media sizes etc.
+//todo: create a register page
+//todo: make the login screen a little prettier, dunno how Im too tired to deal with this, your job future sandoval
+@import "./variables";
+@import "./resets";
+@import "./components";
+// @import "./components";
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
+}
+html {
+  display: flex;
+  // width: 100%;
+  // flex-direction: column;
+}
+// .navigation-bar__logo {
+//   width: 2vw;
+//   max-width: 28px;
+//   min-width: 22px;
+//   margin-right: 14px;
+// }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  // overflow-x: hidden;
+  background-color: $primary-color;
+  font-family: "GT America Mono", sans-serif;
+  color: $acccent-color;
+  font-size: 14px;
+  line-height: 20px;
+  //by changing the text transform unique id li objects are no longer bound
+  //by body and instead go to default
+  text-transform: uppercase;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  color: $acccent-color;
+}
+// p {
+//   display: flex;
+//   margin-bottom: 15px;
+// }
+
+.navigation-bar {
+  @include responsive-nav;
+  @include nav-link-font-size(16px);
+  width: 100%;
+  // @include responsive-nav;
+  //grid display makes it so that it's evenly distributed
+  display: flex;
+  justify-content: space-between;
+  // align-items: stretch;
+  padding: 20px 30px;
+  // grid-column-gap: 16px;
+  // grid-row-gap: 16px;
+  &__link {
+    @include border();
+    // display: inline-block;
+    // flex: 0 0 auto;
+    margin-right: 10px;
+    margin-left: 2px;
+    padding: 5px 8px;
+    font-family: "GT America Mono", sans-serif;
+    color: #fcfaf3;
+    line-height: 1;
+    text-decoration: none;
+    align-items: center;
+    text-transform: uppercase;
+
+    &.is--social {
+      // @include mobileHide;
+      border-style: dashed;
+      border-color: hsla(48, 0%, 100%, 0.5);
+      color: hsla(48, 0%, 100%, 0.5);
+    }
+    &:hover {
+      background-color: $btn-background;
+      color: $acccent-color;
+    }
+  }
+}
+// nav {
+//   @include responsive-nav;
+// }
+
+.navigation-bar__logo-flex {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profile {
+  @include border;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 2px;
+  padding: 5px 8px;
+  font-family: "GT America Mono", sans-serif;
+
+  line-height: 1;
+  text-decoration: none;
+  align-items: center;
+  text-transform: uppercase;
+
+  border-color: wheat;
+  color: wheat;
+  -webkit-transition: color 200ms ease,
+    background-color 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: color 200ms ease,
+    background-color 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  span {
+    pointer-events: none;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 250px;
+
+    .info {
+      .initials {
+        position: initial;
+        width: 40px;
+        height: 40px;
+
+        color: $acccent-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $btn-background;
+    color: $acccent-color;
+  }
+}
+
+.work-heading {
+  // overflow: hidden;
+  // margin-top: 5%;
+  margin-bottom: 0px;
+  font-family: "Monument Grotesk", sans-serif;
+  color: #fcfaf3;
+  font-size: 7.4em;
+  line-height: 0.9;
+  text-transform: uppercase;
+
+  // &:hover {
+  //   opacity: 0.5;
+  // }
+}
+
+// h1 {
+//   // @include mobile;
+//   display: block;
+//   font-size: 2em;
+//   // margin-block-start: 0.67em;
+//   // margin-block-end: 0.67em;
+//   // margin-inline-start: 0px;
+//   // margin-inline-end: 0px;
+//   font-weight: bold;
+
+//   //teporary fix, bind this to headings later
+
+//   overflow: hidden;
+//   margin-bottom: 0px;
+// }
+.flex {
+  display: flex;
+}
+.mobile-nav {
+  flex-direction: column;
+}
+#last-name {
+  margin-bottom: 20%;
+}
+
+#password {
+  margin-bottom: 10%;
+}
+
+#login-register {
+  margin-bottom: 10%;
+}
+
+.footer {
+  // position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  // display: -ms-grid;
+  // display: grid;
+  margin-top: 2em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 3em;
+  grid-row-gap: 0px;
+  grid-template-columns: auto 0.5fr 1fr 1fr;
+  grid-template-rows: auto;
+  border-top: 1px dashed $acccent-color;
+
+  #{&}__cycle-text {
+    // @include mobileHide;
+    text-transform: uppercase;
+    overflow: hidden;
+    height: 100%;
+    font-family: "Neue Montreal", sans-serif;
+    color: #fcfaf3;
+    font-size: 4em;
+    line-height: 1.1;
+    font-weight: weight(bold);
+    // &:hover {
+    //   color: pink;
+    // }
+  }
+}
+
+.footer__link-wrap {
+  margin-bottom: 1.25em;
+}
+
+.footer__caption {
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  font-family: "GT America Mono", sans-serif;
+  color: $acccent-color;
+  font-size: 14px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.arrow-button__text {
+  display: block;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.arrow-button__text.is--contact {
+  padding-top: 0.05em;
+}
+.arrow-button {
+  display: inline-flex;
+  position: relative;
+  margin-right: 1rem;
+  margin-left: 0px;
+  padding: 0.325rem 3.7em 0.325rem 0.6rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fcfaf3;
+  border-radius: 999px;
+  background-image: url("https://uploads-ssl.webflow.com/62d57921074baa1ce7275405/62fbefaddac62113f3304cb3_Arrow%20White.svg");
+  background-position: 97% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-transition: color 200ms ease,
+    background-color 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: color 200ms ease,
+    background-color 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-family: "GT America Mono", sans-serif;
+  color: #fcfaf3;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    background-color: $btn-background;
+    color: $acccent-color;
+    background-image: url("https://uploads-ssl.webflow.com/62d57921074baa1ce7275405/62fbefadc06b9876d3445adf_Arrow%20Black.svg");
+  }
+}
+.arrow-button.is--footer-social {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 0rem;
+  margin-bottom: 6px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.footer__main-link {
+  display: block;
+  margin-bottom: 0.5rem;
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  font-family: "Monument Grotesk", sans-serif;
+  color: $acccent-color;
+  font-size: 3.5em;
+  line-height: 1;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.form-wrap {
+  overflow: hidden;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-self: center;
+  margin: auto;
+  width: 90%;
+  align-items: center;
+  // @include mobile;
+}
+.inputs {
+  width: 100%;
+  max-width: 350px;
+
+  .input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    input {
+      @include border;
+      border: none;
+      width: 100%;
+      background-color: wheat;
+      text-transform: none;
+      padding: 4px 4px 4px 30px;
+      height: 50px;
+      outline: none;
+      color: $acccent-color;
+    }
+  }
+}
+
+.router-link {
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.forgot-password {
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+button {
+  @include border;
+  display: block;
+
+  border: none;
+  width: 100%;
+  background-color: $primary-color;
+  padding: 4px;
+  height: 50px;
+  background-color: wheat;
+
+  color: $acccent-color;
+  &:hover {
+    outline: none;
+    background-color: $acccent-color;
+    color: $primary-color;
+    cursor: pointer;
+  }
+}
+.modal {
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+  position: center;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  background-color: $acccent-color;
+  &__content {
+    flex-direction: column;
+    justify-self: center;
+  }
+}
+
+.preloaders {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loader-wrapper {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: 25%;
+  min-width: 300px;
+  min-height: 300px;
+  display: block;
+  z-index: 30000;
+  border: 2px solid white;
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin-left: 10%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  &--2 {
+    background: $primary-color;
+    .loader {
+      @include WidthAndHeight($circularLoaderSize, $circularLoaderSize);
+      .circle-line {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        position: absolute;
+        border-radius: 100%;
+        animation: rotate180 2s infinite;
+        border: 5px solid transparent;
+
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) {
+            left: 10% * ($i - 1);
+            top: 10% * ($i - 1);
+            width: 100% - 20% * ($i - 1);
+            height: 100% - 20% * ($i - 1);
+            animation-delay: 0.5s * ($i - 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: $acccent-color;
+}
+
+// .profileBtn {
+//   @include border;
+//   left: 0%;
+//   top: 0%;
+//   right: 0%;
+//   bottom: auto;
+//   line-height: 1;
+//   -webkit-transition: opacity 200ms ease;
+//   transition: opacity 200ms ease;
+//   &:hover {
+//     outline: none;
+
+//     color: wheat;
+//     cursor: pointer;
+//   }
+// }

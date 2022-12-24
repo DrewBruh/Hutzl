@@ -1,30 +1,64 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div class="app-wrapper">
+    <div class="app">
+      <Navigation v-if="!navigation" />
+      <router-view />
+      <Footer v-if="!navigation" />
+    </div>
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
-nav {
-  padding: 30px;
-}
+export default {
+  name: "app",
+  components: {
+    Navigation,
+    Footer,
+  },
+  data() {
+    return {
+      navigation: null,
+    };
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("updateUser", user);
+      if (user) {
+        this.$store.dispatch("getCurrentUser");
+        console.log(this.$store.state.profileEmail);
+      }
+    });
+    this.checkRoute();
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+    console.log(firebase.auth().currentUser);
+  },
+  mounted() {},
+  methods: {
+    checkRoute() {
+      if (
+        this.$route.name === "Login" ||
+        this.$route.name === "Register" ||
+        this.$route.name === "ForgotPassword"
+      ) {
+        this.navigation = true;
+        return;
+      }
+      this.navigation = false;
+    },
+  },
+  watch: {
+    $route() {
+      this.checkRoute();
+    },
+  },
+};
+</script>
+<!-- when you're importing your styles ffrom these things, remember use style lang  -->
+<style lang="scss">
+@import "@/scss/main.scss";
 </style>
