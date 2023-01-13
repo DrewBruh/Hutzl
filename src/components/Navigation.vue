@@ -4,14 +4,16 @@
   <header>
     <nav class="navigation-bar">
       <nav class="navigation-bar__logo-flex">
-        <router-link class="header" :to="{ name: 'Home' }">
+        <router-link :to="{ name: 'Home' }">
           <img
+            id="birb-icon"
             src="../assets/bird.png"
             loading="eager"
             alt="HUTZL logo Icon"
             class="navigationbar__logo"
           />
         </router-link>
+
         <div class="navigation-bar__links">
           <ul>
             <router-link class="navigation-bar__link" :to="{ name: 'Products' }"
@@ -58,7 +60,7 @@
                     </router-link>
                   </div>
                   <div class="option">
-                    <router-link class="option" to="#">
+                    <router-link class="option" :to="{ name: 'Cart' }">
                       <p class="navigation-bar__link">Cart</p>
                     </router-link>
                   </div>
@@ -107,40 +109,6 @@ export default {
   },
 };
 </script>
-
-<!-- <script>
-export default {
-  //this is the mobile view part!
-  data() {
-    return {
-      mobile: null,
-      mobileNav: null,
-      windowWidth: null,
-    };
-  },
-  //frist we gootta detect our screen size to see if it's on mobile
-  created() {
-    //we're looking for the resize event whenever we can
-    window.addEventListener("resize", this.checkScreen);
-    this.checkScreen;
-  },
-  methods: {
-    checkScreen() {
-      this.windowWidth = window.innerWidth;
-      if (this.windowWidth <= 750) {
-        this.mobile = true;
-        return;
-      }
-      this.mobile = false;
-      this.mobileNav = false;
-      return;
-    },
-    toggleMobileNav() {
-      this.mobileNav = !this.mobileNav;
-    },
-  },
-};
-</script> -->
 
 <style lang="scss">
 @import "@/scss/main.scss";

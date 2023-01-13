@@ -4,6 +4,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import Products from "../views/Products.vue";
+import Cart from "../views/Cart.vue";
 
 const routes = [
   {
@@ -51,6 +52,17 @@ const routes = [
     component: Products,
     meta: {
       title: "Products",
+    },
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    component: Cart,
+    meta: {
+      title: "Cart",
+    },
+    query: {
+      product: ":product",
     },
   },
 ];

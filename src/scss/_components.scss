@@ -1,29 +1,13 @@
-// @mixin mobile {
-//   @media (max-width: $mobile) {
-//     font-size: 0.5rem;
-//   }
-// }
-// @mixin mobileHide {
-//   @media (max-width: $mobile) {
-//     display: none;
-//   }
-// }
-
-// @mixin mobileNav {
-//   @media (max-width: $mobile) {
-//     display: flex;
-//     flex-direction: column;
-//     font-size: 65px;
-//   }
-// }
-
-// @mixin mobileNavFooter {
-//   @media (max-width: $mobile) {
-//     display: flex;
-//     flex-direction: column;
-//     font-size: 2rem;
-//   }
-// }
+@mixin transition(
+  $transition-property,
+  $transition-duration: $transition-duration,
+  $transition-timing-function: $ease-out-back
+) {
+  -webkit-transition: $transition-property $transition-duration
+    $transition-timing-function;
+  transition: $transition-property $transition-duration
+    $transition-timing-function;
+}
 
 @mixin responsive-nav {
   width: 50%;
@@ -52,7 +36,7 @@
     font-size: $font-size * 0.8;
   }
 }
-
+//this creates a stylized border for components such as buttons
 @mixin border {
   border-style: solid;
   border-width: 1px;
@@ -69,117 +53,4 @@
 @mixin WidthAndHeight($w, $h) {
   width: $w;
   height: $h;
-}
-@keyframes rotate180 {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes rotate45 {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    opacity: 0.3;
-    transform: rotate(45deg);
-  }
-  50% {
-    transform: rotate(90deg);
-  }
-  75% {
-    transform: rotate(135deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-}
-
-@keyframes rotateXY {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    opacity: 0.8;
-    transform: rotateY(180deg) rotateX(0deg);
-  }
-  100% {
-    transform: rotateY(180deg) rotateX(180deg);
-  }
-}
-
-@keyframes translateRotateSquares {
-  0%,
-  100% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  25% {
-    opacity: 0.3;
-    transform: translate(40px, 40px) rotate(45deg);
-  }
-  50% {
-    transform: translate(0px, 80px) rotate(0deg);
-  }
-  75% {
-    transform: translate(-40px, 40px) rotate(45deg);
-  }
-}
-
-@keyframes translateSquares {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  25% {
-    opacity: 0.3;
-    transform: translate(0px, 5px);
-  }
-  75% {
-    transform: translate(0, 0px);
-  }
-  100% {
-    transform: translate(0, 0px);
-  }
-}
-@keyframes wave {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  50% {
-    opacity: 0.3;
-    transform: translate(-2px, 0px);
-  }
-  100% {
-    transform: translate(0, 0px);
-  }
-}
-
-@keyframes wave2 {
-  0% {
-    transform: translate(0, 0px);
-  }
-  50% {
-    opacity: 0.3;
-    transform: translate(0, 20px);
-  }
-  100% {
-    transform: translate(0, 0px);
-  }
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }

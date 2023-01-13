@@ -22,7 +22,7 @@
           <input type="text" placeholder="Email" v-model="email" />
         </div>
         <div class="input" id="password">
-          <input type="text" placeholder="Password" v-model="password" />
+          <input type="password" placeholder="Password" v-model="password" />
         </div>
         <div v-show="error" class="error">{{ this.errorMsg }}</div>
       </div>

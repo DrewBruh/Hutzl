@@ -6,9 +6,9 @@
       <p>Price: $ {{ product.price }}</p>
     </div>
     <div class="product-gallery">
-      <img src="https://i.imgur.com/peEFiFE.jpg" />
+      <img v-if="isProductUrlReady" :src="product.imgUrl" :alt="product.name" />
     </div>
-    <!-- <img :src="product.imageUrl" /> -->
+    <button @click="addToCart">Add to Cart</button>
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       product: {},
+      isProductUrlReady: false,
     };
   },
   created() {
@@ -28,6 +29,7 @@ export default {
       .then((doc) => {
         if (doc.exists) {
           this.product = doc.data();
+          this.isProductUrlReady = true;
         } else {
           console.log("Product not found");
         }
@@ -35,6 +37,19 @@ export default {
       .catch((error) => {
         console.log("Error getting product:", error);
       });
+  },
+  methods: {
+    addToCart() {
+      console.log(this.product);
+      // Transfer the product data to the Cart page
+      this.$router.push({
+        name: "Cart",
+        query: {
+          product: JSON.stringify(this.product),
+        },
+        quantity: 1,
+      });
+    },
   },
 };
 </script>
