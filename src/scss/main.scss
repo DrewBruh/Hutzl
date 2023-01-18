@@ -84,8 +84,13 @@ html {
   }
   #birb-icon {
     @media (max-width: 700px) {
-      min-width: 25vh;
+      min-width: 15vh;
       padding-top: 20%;
+    }
+  }
+  .hamburger {
+    @media (max-width: 700px) {
+      display: none;
     }
   }
   .profile {
@@ -353,5 +358,79 @@ html {
       flex-direction: column;
       justify-self: center;
     }
+  }
+}
+
+.container {
+  position: relative;
+}
+@media only screen and (max-width: 700px) {
+  .open-button {
+    display: block;
+  }
+  .sidenav {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .open-button {
+    display: none;
+  }
+  .sidenav {
+    display: none;
+  }
+}
+
+.open-button {
+  @include transition(color, 300ms, ease-in-out);
+  @include transition($primary-color);
+  font-weight: 900;
+  height: 69px;
+  position: fixed;
+  bottom: 40px;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: wheat;
+  color: $acccent-color;
+
+  cursor: pointer;
+}
+
+.sidenav {
+  position: fixed;
+  bottom: 109px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  height: 0;
+  overflow: hidden;
+  background-color: wheat;
+  //the transform element makes it seem as though its floating up
+
+  // transform: translateY(100%);
+
+  transition: all 0.3s ease-out;
+  border-radius: 20px;
+}
+.sidenav.is-open {
+  height: auto;
+  transform: translateY(0);
+}
+.sidenav-content {
+  padding: 20px;
+}
+
+.sidenav-item {
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  font-size: 3.5em;
+  line-height: 1;
+  font-weight: 900;
+  display: block;
+  margin-bottom: 15px;
+  &:hover {
+    opacity: 0.5;
   }
 }

@@ -76,6 +76,20 @@
         </ul>
       </div>
     </nav>
+    <div class="container">
+      <button class="open-button" @click="toggleSidenav">Menu</button>
+      <div
+        class="sidenav"
+        v-bind:class="{ 'is-open': isOpen }"
+        @click="toggleSidenav"
+      >
+        <div class="sidenav-content">
+          <router-link to="/" class="sidenav-item">Home</router-link>
+          <router-link to="/about" class="sidenav-item">About</router-link>
+          <router-link to="/contact" class="sidenav-item">Contact</router-link>
+        </div>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -88,12 +102,16 @@ export default {
   data() {
     return {
       profileMenu: null,
+      isOpen: false,
     };
   },
 
   methods: {
     signOut() {
       firebase.auth().signOut();
+    },
+    toggleSidenav() {
+      this.isOpen = !this.isOpen;
     },
     toggleProfileMenu(e) {
       if (e.target === this.$refs.profile) {
