@@ -55,7 +55,11 @@ export default {
       if (isNaN(this.products[index].quantity))
         this.products[index].quantity = 1;
 
-      this.products[index].quantity++;
+      if (this.products[index].quantity < 2) {
+        this.products[index].quantity++;
+      } else {
+        console.log("Quantity cannot be more than 2");
+      }
     },
     decrementQuantity(index) {
       if (isNaN(this.products[index].quantity))
